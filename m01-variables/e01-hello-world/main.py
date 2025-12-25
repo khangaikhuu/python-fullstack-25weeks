@@ -9,5 +9,4 @@
 #   greet("World") -> "Hello, World!"
 
 def greet(name):
-    # TODO: Write your code here
-    pass
+      return f"Hello, {name}!"
