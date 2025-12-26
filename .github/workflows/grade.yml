@@ -87,7 +87,7 @@ jobs:
       - name: Report to LMS
         if: steps.detect.outputs.exercise_found == 'true'
         env:
-          WEBHOOK_URL: "http://test-school.localhost:8000/lms/webhooks/grading/"
+          WEBHOOK_URL: "https://dev.icode.mn/lms/webhooks/grading/"
         run: |
           curl -s -X POST "$WEBHOOK_URL" \
             -H "Content-Type: application/json" \
