@@ -90,8 +90,12 @@ jobs:
         if: steps.detect.outputs.exercise_found == 'true'
         env:
           WEBHOOK_URL: ${{ secrets.LMS_WEBHOOK_URL }}
-          WEBHOOK_SECRET: ${{ secrets.LMS_WEBHOOK_SECRET }}
         run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "No webhook URL configured - skipping LMS report"
+            exit 0
+          fi
+
           curl -s -X POST "$WEBHOOK_URL" \
             -H "Content-Type: application/json" \
             -d "{
